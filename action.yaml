@@ -18,5 +18,4 @@ runs:
         unzip awscliv2.zip
         sudo ./aws/install
         OUTPUT="$(aws ecr get-login-password --region us-west-2)"
-        echo "::add-mask::${OUTPUT}"
         echo "::set-output name=ecr_pass::${OUTPUT}"
