@@ -1,9 +1,14 @@
 name: 'ECR Login'
 description: 'ECR Login'
+outputs:
+  ecr_pass:
+    description: "ECR Pass"
+    value: ${{ steps.ecr_pass.outputs.ecr_pass }}
 runs:
   using: "composite"
   steps:
     - name: ECR Login
+      id: ecr_pass
       shell: bash
       working-directory: ${{ github.workspace }}
       run: |
