@@ -1,5 +1,10 @@
 name: 'ECR Login'
 description: 'ECR Login'
+inputs:
+  awsRegion:
+    description: 'AWS Region'
+    required: true
+    default: 'us-west-2'
 outputs:
   ecr_pass:
     description: "ECR Pass"
@@ -18,5 +23,5 @@ runs:
         unzip -qq awscliv2.zip
         sudo ./aws/install
         aws --version
-        OUTPUT="$(aws ecr get-login-password --region us-west-2)"
+        OUTPUT="$(aws ecr get-login-password --region ${{ inputs.awsRegion }})"
         echo "::set-output name=ecr_pass::${OUTPUT}"
