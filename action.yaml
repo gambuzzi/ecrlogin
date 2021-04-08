@@ -19,3 +19,7 @@ runs:
         sudo ./aws/install
         OUTPUT="$(aws ecr get-login-password --region us-west-2)"
         echo "::set-output name=ecr_pass::${OUTPUT}"
+    - name: Mask
+      shell: bash
+      working-directory: ${{ github.workspace }}
+      run: echo "::add-mask::${{ steps.ecr_pass.outputs.ecr_pass }}"
